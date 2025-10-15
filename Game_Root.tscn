@@ -1,39 +1,114 @@
-[gd_scene load_steps=4 format=3 uid="uid://my24kio0ujk5"]
+[gd_scene load_steps=13 format=3 uid="uid://my24kio0ujk5"]
 
+[ext_resource type="Script" uid="uid://b5tqp6hq0k1hn" path="res://slice.gd" id="1_7v5bd"]
 [ext_resource type="Texture2D" uid="uid://ccm01am80sq2x" path="res://pb_slice.png" id="1_dblqq"]
 [ext_resource type="Texture2D" uid="uid://cdan1jewi6dpw" path="res://marmalade_slice.png" id="2_7v5bd"]
 [ext_resource type="Texture2D" uid="uid://boqxi1goo45gw" path="res://strawberry_slice.png" id="3_p6n2f"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dblqq"]
+size = Vector2(16, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7v5bd"]
+size = Vector2(17, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6n2f"]
+size = Vector2(18, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jc5sx"]
+size = Vector2(16, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1s6cj"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2j4q"]
+size = Vector2(17, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8r33m"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ped8m"]
+size = Vector2(16, 16)
+
 [node name="GameRoot" type="Node2D"]
 
-[node name="Sprite2D1" type="Sprite2D" parent="." groups=["PeanutButter"]]
-position = Vector2(76, 43)
+[node name="Slice1" type="Area2D" parent="." groups=["PeanutButter"]]
+position = Vector2(42, 21)
+script = ExtResource("1_7v5bd")
+
+[node name="Toast" type="Sprite2D" parent="Slice1" groups=["PeanutButter"]]
 texture = ExtResource("1_dblqq")
 
-[node name="Sprite2D2" type="Sprite2D" parent="." groups=["PeanutButter"]]
-position = Vector2(77, 71)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slice1"]
+shape = SubResource("RectangleShape2D_dblqq")
+
+[node name="Slice2" type="Area2D" parent="." groups=["PeanutButter"]]
+position = Vector2(51, 62)
+script = ExtResource("1_7v5bd")
+
+[node name="Toast" type="Sprite2D" parent="Slice2" groups=["PeanutButter"]]
 texture = ExtResource("1_dblqq")
 
-[node name="Sprite2D3" type="Sprite2D" parent="." groups=["PeanutButter"]]
-position = Vector2(66, 96)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slice2"]
+shape = SubResource("RectangleShape2D_7v5bd")
+
+[node name="Slice3" type="Area2D" parent="." groups=["PeanutButter"]]
+position = Vector2(59, 91)
+script = ExtResource("1_7v5bd")
+
+[node name="Toast" type="Sprite2D" parent="Slice3" groups=["PeanutButter"]]
 texture = ExtResource("1_dblqq")
 
-[node name="Sprite2D4" type="Sprite2D" parent="." groups=["PeanutButter"]]
-position = Vector2(76, 124)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slice3"]
+shape = SubResource("RectangleShape2D_p6n2f")
+
+[node name="Slice4" type="Area2D" parent="." groups=["PeanutButter"]]
+position = Vector2(60, 117)
+script = ExtResource("1_7v5bd")
+
+[node name="Toast" type="Sprite2D" parent="Slice4" groups=["PeanutButter"]]
 texture = ExtResource("1_dblqq")
 
-[node name="Sprite2D5" type="Sprite2D" parent="." groups=["Marmalade"]]
-position = Vector2(150, 45)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slice4"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_jc5sx")
+
+[node name="Slice5" type="Area2D" parent="." groups=["Marmalade"]]
+position = Vector2(131, 32)
+script = ExtResource("1_7v5bd")
+
+[node name="Toast" type="Sprite2D" parent="Slice5" groups=["Marmalade"]]
 texture = ExtResource("2_7v5bd")
 
-[node name="Sprite2D6" type="Sprite2D" parent="." groups=["Marmalade"]]
-position = Vector2(152, 74)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slice5" groups=["Marmalade"]]
+shape = SubResource("RectangleShape2D_1s6cj")
+
+[node name="Slice6" type="Area2D" parent="." groups=["Marmalade"]]
+position = Vector2(144, 69)
+script = ExtResource("1_7v5bd")
+
+[node name="Toast" type="Sprite2D" parent="Slice6" groups=["Marmalade"]]
 texture = ExtResource("2_7v5bd")
 
-[node name="Sprite2D7" type="Sprite2D" parent="." groups=["Strawberry"]]
-position = Vector2(148, 99)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slice6" groups=["Marmalade"]]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_c2j4q")
+
+[node name="Slice7" type="Area2D" parent="." groups=["Strawberry"]]
+position = Vector2(140, 97)
+script = ExtResource("1_7v5bd")
+
+[node name="Toast" type="Sprite2D" parent="Slice7" groups=["Strawberry"]]
 texture = ExtResource("3_p6n2f")
 
-[node name="Sprite2D8" type="Sprite2D" parent="." groups=["Strawberry"]]
-position = Vector2(156, 125)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slice7"]
+shape = SubResource("RectangleShape2D_8r33m")
+
+[node name="Slice8" type="Area2D" parent="." groups=["Strawberry"]]
+position = Vector2(143, 130)
+script = ExtResource("1_7v5bd")
+
+[node name="Toast" type="Sprite2D" parent="Slice8" groups=["Strawberry"]]
 texture = ExtResource("3_p6n2f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slice8" groups=["Strawberry"]]
+shape = SubResource("RectangleShape2D_ped8m")
