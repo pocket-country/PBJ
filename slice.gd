@@ -2,8 +2,11 @@ extends Area2D
 
 signal slice_clicked(slice_name: String, selected: bool)
 
-
+# a very simple two state "fsa"
 var selected: bool
+
+# for highlighting slices via shader.  Dude I wrote shader code!
+var slice_material = $Toast.material
 
 
 func _ready():
@@ -23,8 +26,10 @@ func on_click():
 	print("%s clicked!" % [name])
 	if selected:
 		selected = false
+		slice_material.set_shader_parameter("is_highlighted", false)
 	else:
 		selected = true
+		slice_material.set_shader_parameter("is_highlighted", true)
 	# gotta let the controler know that we've been selected
 	emit_signal("slice_clicked", name, selected)
 
@@ -39,6 +44,3 @@ func regerate():
 		get_tree().get_root().maralade -= 1
 	if is_in_group("Strawberry"):
 		get_tree().get_root().strawberry -= 1	
-		
-		
-	

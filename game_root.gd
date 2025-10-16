@@ -7,6 +7,10 @@ var strawberry: int
 
 var coins: int
 
+# hold sandwiches.  We will generalize this later
+var sandwiches: Array = []
+var sandwich_count: int = 0
+
 # Slice State Constants for control FSA
 const STATE_NONE = 0
 const STATE_PB = 1
@@ -31,6 +35,11 @@ func _ready():
 			var error = child.slice_clicked.connect(_on_slice_click)
 			if error != OK:
 				print("Error connecting signal: ", error)
+				
+	# get references to all the sandwich nodes
+	sandwiches = get_tree().get_nodes_in_group("Sandwiches")
+	for sando in sandwiches:
+		sando.visible = false
 
 
 func _on_slice_click(slice_name: String, slice_selected: bool):
@@ -79,4 +88,9 @@ func process_slice_click(slice_type: String, selected: bool):
 
 # This function resets the state after the animation/clearance
 func make_sandwich():
-	pass
+	var current_sando = sandwiches[sandwich_count]
+	current_sando.visible = true
+	sandwich_count += 1
+	
+	
+	
