@@ -11,23 +11,19 @@ var coins: int
 var sandwiches: Array = []
 var sandwich_count: int = 0
 
-# Slice State Constants for control FSA
-const STATE_NONE = 0
-const STATE_PB = 1
-const STATE_J = 2
-const STATE_PB_AND_J = 3
-
-var current_state = STATE_NONE # Initialize the machine
-
+# hold current activated slices, one of each kind
+var got_pb: Area2D
+var got_j: Area2D
 
 func _ready():
-	# set values for resources
+	# set values for resources (how big is the jar) used to make new slices
 	peanut_butter = 10
 	marmalade = 5
 	strawberry = 5
+	# and if we sell any, well ...
 	coins = 0
 	
-# Connect to all the slice signals
+	# Connect to all the slice signals
 	for child in get_children():
 		# Check if the child is a slice node (e.g., check its group, name, or type)
 		if child.is_in_group("slices"): 
@@ -40,50 +36,40 @@ func _ready():
 	sandwiches = get_tree().get_nodes_in_group("Sandwiches")
 	for sando in sandwiches:
 		sando.visible = false
+		
+	# init active slices
+	got_pb = null
+	got_j = null
 
 
-func _on_slice_click(slice_name: String, slice_selected: bool):
-	# get slice group
-	var slice_type:String = "placeholder"
-	# call to process slice
-	process_slice_click(slice_type, slice_selected)
-
-
-# This function is called by the root node when a slice signal is received
-func process_slice_click(slice_type: String, selected: bool):
-	# Outer Match: Selects based on the CURRENT STATE
-	match current_state:
-		STATE_NONE:
-			# can't have unselected as nothing is slected?!
-			if selected:
-				if slice_type == "PeanutButter":
-					current_state = STATE_PB
-				# Action: Highlight the PB slice
-				if (slice_type == "Marmalade" or slice_type == "strawberry"):
-					current_state = STATE_J
-					# Action: Highlight the PB slice
-		STATE_J:
-			# Only accept the opposite slice type to complete the set
-			if slice_type == "PeanutButter" and selected:
-				current_state = STATE_PB_AND_J
-				# Action: Trigger the slap animation, play sound, update score, start timer
-			if (slice_type == "Marmalade" or slice_type == "Strawberry") and not selected:
-				# don't have pb or it would be BOTH.  So retreat to none
-				current_state = STATE_NONE
-		STATE_PB:
-			# Only accept the opposite slice type to complete the set
-			if slice_type ==  "Marmalade" or slice_type == "Strawberry" and selected:
-				current_state = STATE_PB_AND_J
-				# Action: Trigger the slap animation, play sound, update score, start timer
-			if (slice_type == "PeanutButter") and not selected:
-				#  retreat to none
-				current_state = STATE_NONE
-				# Action: Trigger the slap animation, play sound, update score, start timer
-		STATE_PB_AND_J:
-			current_state = STATE_NONE
-			# Action: Ignore all clicks while the sandwich process is finishing
-			make_sandwich()
-
+func _on_slice_click(which_slice):
+	var slice_type:String
+	# Get slice group
+	# And see if we've already got a slice of this type
+	if which_slice.is_in_group("PeanutButter"):
+		if got_pb == null:
+			got_pb = which_slice
+			got_pb.select()
+		else:
+			# Did we click on the same slice?  If so who cares.  
+			# If not, switch nodes, can only have one activated
+			if which_slice != got_pb:
+				got_pb.deslect()
+				got_pb = which_slice
+				got_pb.select()
+	else: # jelly slice
+		if got_j == null:
+			got_j = which_slice
+			got_j.select()
+		else:
+			if which_slice != got_pb:
+				got_pb.deslect()
+				got_pb = which_slice
+				got_pb.select()
+	
+	# do we have the makings of a sandwich?
+	if got_pb != null and got_j != null:
+		make_sandwich()
 
 
 # This function resets the state after the animation/clearance
@@ -92,5 +78,12 @@ func make_sandwich():
 	current_sando.visible = true
 	sandwich_count += 1
 	
+	# deal with slices, hide them, set active to null etc.
+		# TODO that mouse thing?
+	got_pb.deselect()
+	got_pb.hide()
+	got_pb = null
 	
-	
+	got_j.deselect()
+	got_j.hide()
+	got_j = null

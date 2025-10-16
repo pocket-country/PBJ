@@ -1,9 +1,6 @@
 extends Area2D
 
-signal slice_clicked(slice_name: String, selected: bool)
-
-# a very simple two state "fsa"
-var selected: bool
+signal slice_clicked(whoami: Area2D)
 
 # for highlighting slices via shader.  Dude I wrote shader code!
 var slice_material = $Toast.material
@@ -12,32 +9,39 @@ var slice_material = $Toast.material
 func _ready():
 	# Connect the input_event signal to a custom function
 	input_event.connect(_on_input_event)
-	selected = false
+
 
 func _on_input_event(viewport, event, shape_idx):
-	# Check if the event is a mouse button event
 	if event is InputEventMouseButton:
-		# Check if the left mouse button was pressed
 		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-			# Call your custom function when the sprite is clicked
 			on_click()
+
 
 func on_click():
 	print("%s clicked!" % [name])
-	if selected:
-		selected = false
-		slice_material.set_shader_parameter("is_highlighted", false)
-	else:
-		selected = true
-		slice_material.set_shader_parameter("is_highlighted", true)
 	# gotta let the controler know that we've been selected
-	emit_signal("slice_clicked", name, selected)
+	emit_signal("slice_clicked", self)
+
+
+func select():
+	slice_material.set_shader_parameter("is_highlighted", true)
+
+
+func deselect():
+	slice_material.set_shader_parameter("is_highlighted", false)
+
 
 func into_sandwich():
 	hide()
+	# something about keeping it from being able to be clicked on TODO
+
 
 func regerate():
 	show()
+	deselect()
+	#enable mouse?
+	
+	# take out of jar to spread on slice
 	if is_in_group("PeanutButter"):
 		get_tree().get_root().peanut_butter -= 1
 	if is_in_group("Marmalade"):
