@@ -49,7 +49,7 @@ script = ExtResource("1_p6n2f")
 position = Vector2(42, 21)
 script = ExtResource("1_7v5bd")
 
-[node name="Toast" type="Sprite2D" parent="Slice1" groups=["PeanutButter"]]
+[node name="Toast" type="Sprite2D" parent="Slice1"]
 material = SubResource("ShaderMaterial_1s6cj")
 texture = ExtResource("1_dblqq")
 
@@ -60,7 +60,7 @@ shape = SubResource("RectangleShape2D_dblqq")
 position = Vector2(51, 62)
 script = ExtResource("1_7v5bd")
 
-[node name="Toast" type="Sprite2D" parent="Slice2" groups=["PeanutButter"]]
+[node name="Toast" type="Sprite2D" parent="Slice2"]
 material = SubResource("ShaderMaterial_c2j4q")
 texture = ExtResource("1_dblqq")
 
@@ -71,7 +71,7 @@ shape = SubResource("RectangleShape2D_7v5bd")
 position = Vector2(59, 91)
 script = ExtResource("1_7v5bd")
 
-[node name="Toast" type="Sprite2D" parent="Slice3" groups=["PeanutButter"]]
+[node name="Toast" type="Sprite2D" parent="Slice3"]
 material = SubResource("ShaderMaterial_c2j4q")
 texture = ExtResource("1_dblqq")
 
@@ -82,7 +82,7 @@ shape = SubResource("RectangleShape2D_p6n2f")
 position = Vector2(60, 117)
 script = ExtResource("1_7v5bd")
 
-[node name="Toast" type="Sprite2D" parent="Slice4" groups=["PeanutButter"]]
+[node name="Toast" type="Sprite2D" parent="Slice4"]
 material = SubResource("ShaderMaterial_c2j4q")
 texture = ExtResource("1_dblqq")
 
@@ -94,7 +94,7 @@ shape = SubResource("RectangleShape2D_jc5sx")
 position = Vector2(131, 32)
 script = ExtResource("1_7v5bd")
 
-[node name="Toast" type="Sprite2D" parent="Slice5" groups=["Marmalade"]]
+[node name="Toast" type="Sprite2D" parent="Slice5"]
 material = SubResource("ShaderMaterial_c2j4q")
 texture = ExtResource("2_7v5bd")
 
@@ -117,7 +117,7 @@ shape = SubResource("RectangleShape2D_c2j4q")
 position = Vector2(140, 97)
 script = ExtResource("1_7v5bd")
 
-[node name="Toast" type="Sprite2D" parent="Slice7" groups=["Strawberry"]]
+[node name="Toast" type="Sprite2D" parent="Slice7"]
 material = SubResource("ShaderMaterial_c2j4q")
 texture = ExtResource("3_p6n2f")
 
@@ -138,7 +138,7 @@ shape = SubResource("RectangleShape2D_ped8m")
 [node name="Sando1" type="Area2D" parent="." groups=["Sandwich"]]
 position = Vector2(240, 38)
 
-[node name="Sprite2D" type="Sprite2D" parent="Sando1" groups=["Sandwich"]]
+[node name="Sprite2D" type="Sprite2D" parent="Sando1"]
 texture = ExtResource("7_1s6cj")
 
 [node name="Sando2" type="Area2D" parent="." groups=["Sandwich"]]
@@ -153,7 +153,7 @@ position = Vector2(243, 92)
 [node name="Sprite2D" type="Sprite2D" parent="Sando3"]
 texture = ExtResource("7_1s6cj")
 
-[node name="Sando4" type="Area2D" parent="." groups=["Sandwich", "Slice"]]
+[node name="Sando4" type="Area2D" parent="." groups=["Sandwich"]]
 position = Vector2(243, 128)
 
 [node name="Sprite2D" type="Sprite2D" parent="Sando4"]

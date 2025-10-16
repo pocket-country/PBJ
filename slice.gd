@@ -3,10 +3,17 @@ extends Area2D
 signal slice_clicked(whoami: Area2D)
 
 # for highlighting slices via shader.  Dude I wrote shader code!
-var slice_material = $Toast.material
+@onready var slice_material = null
 
 
 func _ready():
+	# Get Sprite2D node
+	var toast_sprite = get_node("Toast")
+	# get a duplicate of the origional material so all are not shared
+	toast_sprite.material = toast_sprite.material.duplicate()
+	# cast for type safety
+	slice_material = toast_sprite.material as ShaderMaterial
+	
 	# Connect the input_event signal to a custom function
 	input_event.connect(_on_input_event)
 
@@ -24,22 +31,26 @@ func on_click():
 
 
 func select():
+	print("In select fuction, turning on highlight")
 	slice_material.set_shader_parameter("is_highlighted", true)
 
 
 func deselect():
+	print("In deselect fuction, turning off highlight")
 	slice_material.set_shader_parameter("is_highlighted", false)
 
 
 func into_sandwich():
 	hide()
-	# something about keeping it from being able to be clicked on TODO
+	# something about keeping it from being able to be clicked on
+	monitoring = false
 
 
 func regerate():
 	show()
 	deselect()
 	#enable mouse?
+	monitoring = true
 	
 	# take out of jar to spread on slice
 	if is_in_group("PeanutButter"):
