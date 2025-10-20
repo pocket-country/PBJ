@@ -30,17 +30,18 @@ var day: int = 1					# currently placeholder
 
 
 func _ready():
+	pass
 	# initialize status bar display.  This really crys out for having
 	# all the metrics above in a dict with keys that match display node 
 	# names, common guy! TODO
-	UI.update_metric("BD", bread)
-	UI.update_metric("PB", peanut_butter)
-	UI.update_metric("OM", marmalade)
-	UI.update_metric("SJ", strawberry)	
-	UI.update_metric("PBS", pb_slices)
-	UI.update_metric("OMS", marmalade_slices)
-	UI.update_metric("SJS", strawberry_slices)
-	UI.update_metric("SWCH", sandwich_count)
-	UI.update_metric("COIN", coins)
+	#UI.update_metric("BD", bread)
+	#UI.update_metric("PB", peanut_butter)
+	#UI.update_metric("OM", marmalade)
+	#UI.update_metric("SJ", strawberry)	
+	#UI.update_metric("PBS", pb_slices)
+	#UI.update_metric("OMS", marmalade_slices)
+	#UI.update_metric("SJS", strawberry_slices)
+	#UI.update_metric("SWCH", sandwich_count)
+	#UI.update_metric("COIN", coins)
 	
 	

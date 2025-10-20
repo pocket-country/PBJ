@@ -47,6 +47,124 @@ size = Vector2(16, 16)
 [node name="GameRoot" type="Node"]
 script = ExtResource("1_p6n2f")
 
+[node name="GameWorld" type="Node2D" parent="."]
+script = ExtResource("3_8r33m")
+
+[node name="Slice1" type="Area2D" parent="GameWorld" groups=["PeanutButter", "Slice"]]
+position = Vector2(42, 21)
+script = ExtResource("1_7v5bd")
+
+[node name="Toast" type="Sprite2D" parent="GameWorld/Slice1"]
+material = SubResource("ShaderMaterial_1s6cj")
+texture = ExtResource("1_dblqq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Slice1"]
+shape = SubResource("RectangleShape2D_dblqq")
+
+[node name="Slice2" type="Area2D" parent="GameWorld" groups=["PeanutButter", "Slice"]]
+position = Vector2(51, 62)
+script = ExtResource("1_7v5bd")
+
+[node name="Toast" type="Sprite2D" parent="GameWorld/Slice2"]
+material = SubResource("ShaderMaterial_c2j4q")
+texture = ExtResource("1_dblqq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Slice2"]
+shape = SubResource("RectangleShape2D_7v5bd")
+
+[node name="Slice3" type="Area2D" parent="GameWorld" groups=["PeanutButter", "Slice"]]
+position = Vector2(59, 91)
+script = ExtResource("1_7v5bd")
+
+[node name="Toast" type="Sprite2D" parent="GameWorld/Slice3"]
+material = SubResource("ShaderMaterial_c2j4q")
+texture = ExtResource("1_dblqq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Slice3"]
+shape = SubResource("RectangleShape2D_p6n2f")
+
+[node name="Slice4" type="Area2D" parent="GameWorld" groups=["PeanutButter", "Slice"]]
+position = Vector2(60, 117)
+script = ExtResource("1_7v5bd")
+
+[node name="Toast" type="Sprite2D" parent="GameWorld/Slice4"]
+material = SubResource("ShaderMaterial_c2j4q")
+texture = ExtResource("1_dblqq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Slice4"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_jc5sx")
+
+[node name="Slice5" type="Area2D" parent="GameWorld" groups=["Marmalade", "Slice"]]
+position = Vector2(131, 32)
+script = ExtResource("1_7v5bd")
+
+[node name="Toast" type="Sprite2D" parent="GameWorld/Slice5"]
+material = SubResource("ShaderMaterial_c2j4q")
+texture = ExtResource("2_7v5bd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Slice5" groups=["Marmalade"]]
+shape = SubResource("RectangleShape2D_1s6cj")
+
+[node name="Slice6" type="Area2D" parent="GameWorld" groups=["Marmalade", "Slice"]]
+position = Vector2(144, 69)
+script = ExtResource("1_7v5bd")
+
+[node name="Toast" type="Sprite2D" parent="GameWorld/Slice6" groups=["Marmalade"]]
+material = SubResource("ShaderMaterial_c2j4q")
+texture = ExtResource("2_7v5bd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Slice6" groups=["Marmalade"]]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_c2j4q")
+
+[node name="Slice7" type="Area2D" parent="GameWorld" groups=["Slice", "Strawberry"]]
+position = Vector2(140, 97)
+script = ExtResource("1_7v5bd")
+
+[node name="Toast" type="Sprite2D" parent="GameWorld/Slice7"]
+material = SubResource("ShaderMaterial_c2j4q")
+texture = ExtResource("3_p6n2f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Slice7"]
+shape = SubResource("RectangleShape2D_8r33m")
+
+[node name="Slice8" type="Area2D" parent="GameWorld" groups=["Slice", "Strawberry"]]
+position = Vector2(143, 130)
+script = ExtResource("1_7v5bd")
+
+[node name="Toast" type="Sprite2D" parent="GameWorld/Slice8" groups=["Strawberry"]]
+material = SubResource("ShaderMaterial_c2j4q")
+texture = ExtResource("3_p6n2f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Slice8" groups=["Strawberry"]]
+shape = SubResource("RectangleShape2D_ped8m")
+
+[node name="Sando1" type="Area2D" parent="GameWorld" groups=["Sandwich"]]
+position = Vector2(240, 38)
+
+[node name="Sprite2D" type="Sprite2D" parent="GameWorld/Sando1"]
+texture = ExtResource("7_1s6cj")
+
+[node name="Sando2" type="Area2D" parent="GameWorld" groups=["Sandwich"]]
+position = Vector2(239, 71)
+
+[node name="Sprite2D" type="Sprite2D" parent="GameWorld/Sando2"]
+texture = ExtResource("7_1s6cj")
+
+[node name="Sando3" type="Area2D" parent="GameWorld" groups=["Sandwich"]]
+position = Vector2(243, 92)
+
+[node name="Sprite2D" type="Sprite2D" parent="GameWorld/Sando3"]
+texture = ExtResource("7_1s6cj")
+
+[node name="Sando4" type="Area2D" parent="GameWorld" groups=["Sandwich"]]
+position = Vector2(243, 128)
+
+[node name="Sprite2D" type="Sprite2D" parent="GameWorld/Sando4"]
+position = Vector2(-1, 0)
+texture = ExtResource("7_1s6cj")
+
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -80,30 +198,30 @@ theme_override_constants/margin_bottom = 10
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer/Display"]
 layout_mode = 2
 
-[node name="BRD" type="MarginContainer" parent="UI/VBoxContainer/Display/HBoxContainer"]
+[node name="BD" type="MarginContainer" parent="UI/VBoxContainer/Display/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 1
 theme_override_constants/margin_top = 1
 theme_override_constants/margin_right = 1
 theme_override_constants/margin_bottom = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/Display/HBoxContainer/BRD"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/Display/HBoxContainer/BD"]
 layout_mode = 2
 
-[node name="MName" type="Label" parent="UI/VBoxContainer/Display/HBoxContainer/BRD/VBoxContainer"]
+[node name="MName" type="Label" parent="UI/VBoxContainer/Display/HBoxContainer/BD/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Metric Label"
 horizontal_alignment = 1
 
-[node name="Spacer" type="Label" parent="UI/VBoxContainer/Display/HBoxContainer/BRD/VBoxContainer"]
+[node name="Spacer" type="Label" parent="UI/VBoxContainer/Display/HBoxContainer/BD/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "blank"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MValue" type="Label" parent="UI/VBoxContainer/Display/HBoxContainer/BRD/VBoxContainer"]
+[node name="MValue" type="Label" parent="UI/VBoxContainer/Display/HBoxContainer/BD/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Metric Value"
@@ -379,121 +497,3 @@ theme_override_font_sizes/font_size = 10
 text = "Metric Value"
 horizontal_alignment = 1
 vertical_alignment = 2
-
-[node name="GameWorld" type="Node2D" parent="."]
-script = ExtResource("3_8r33m")
-
-[node name="Slice1" type="Area2D" parent="GameWorld" groups=["PeanutButter", "Slice"]]
-position = Vector2(42, 21)
-script = ExtResource("1_7v5bd")
-
-[node name="Toast" type="Sprite2D" parent="GameWorld/Slice1"]
-material = SubResource("ShaderMaterial_1s6cj")
-texture = ExtResource("1_dblqq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Slice1"]
-shape = SubResource("RectangleShape2D_dblqq")
-
-[node name="Slice2" type="Area2D" parent="GameWorld" groups=["PeanutButter", "Slice"]]
-position = Vector2(51, 62)
-script = ExtResource("1_7v5bd")
-
-[node name="Toast" type="Sprite2D" parent="GameWorld/Slice2"]
-material = SubResource("ShaderMaterial_c2j4q")
-texture = ExtResource("1_dblqq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Slice2"]
-shape = SubResource("RectangleShape2D_7v5bd")
-
-[node name="Slice3" type="Area2D" parent="GameWorld" groups=["PeanutButter", "Slice"]]
-position = Vector2(59, 91)
-script = ExtResource("1_7v5bd")
-
-[node name="Toast" type="Sprite2D" parent="GameWorld/Slice3"]
-material = SubResource("ShaderMaterial_c2j4q")
-texture = ExtResource("1_dblqq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Slice3"]
-shape = SubResource("RectangleShape2D_p6n2f")
-
-[node name="Slice4" type="Area2D" parent="GameWorld" groups=["PeanutButter", "Slice"]]
-position = Vector2(60, 117)
-script = ExtResource("1_7v5bd")
-
-[node name="Toast" type="Sprite2D" parent="GameWorld/Slice4"]
-material = SubResource("ShaderMaterial_c2j4q")
-texture = ExtResource("1_dblqq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Slice4"]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_jc5sx")
-
-[node name="Slice5" type="Area2D" parent="GameWorld" groups=["Marmalade", "Slice"]]
-position = Vector2(131, 32)
-script = ExtResource("1_7v5bd")
-
-[node name="Toast" type="Sprite2D" parent="GameWorld/Slice5"]
-material = SubResource("ShaderMaterial_c2j4q")
-texture = ExtResource("2_7v5bd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Slice5" groups=["Marmalade"]]
-shape = SubResource("RectangleShape2D_1s6cj")
-
-[node name="Slice6" type="Area2D" parent="GameWorld" groups=["Marmalade", "Slice"]]
-position = Vector2(144, 69)
-script = ExtResource("1_7v5bd")
-
-[node name="Toast" type="Sprite2D" parent="GameWorld/Slice6" groups=["Marmalade"]]
-material = SubResource("ShaderMaterial_c2j4q")
-texture = ExtResource("2_7v5bd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Slice6" groups=["Marmalade"]]
-position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_c2j4q")
-
-[node name="Slice7" type="Area2D" parent="GameWorld" groups=["Slice", "Strawberry"]]
-position = Vector2(140, 97)
-script = ExtResource("1_7v5bd")
-
-[node name="Toast" type="Sprite2D" parent="GameWorld/Slice7"]
-material = SubResource("ShaderMaterial_c2j4q")
-texture = ExtResource("3_p6n2f")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Slice7"]
-shape = SubResource("RectangleShape2D_8r33m")
-
-[node name="Slice8" type="Area2D" parent="GameWorld" groups=["Slice", "Strawberry"]]
-position = Vector2(143, 130)
-script = ExtResource("1_7v5bd")
-
-[node name="Toast" type="Sprite2D" parent="GameWorld/Slice8" groups=["Strawberry"]]
-material = SubResource("ShaderMaterial_c2j4q")
-texture = ExtResource("3_p6n2f")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Slice8" groups=["Strawberry"]]
-shape = SubResource("RectangleShape2D_ped8m")
-
-[node name="Sando1" type="Area2D" parent="GameWorld" groups=["Sandwich"]]
-position = Vector2(240, 38)
-
-[node name="Sprite2D" type="Sprite2D" parent="GameWorld/Sando1"]
-texture = ExtResource("7_1s6cj")
-
-[node name="Sando2" type="Area2D" parent="GameWorld" groups=["Sandwich"]]
-position = Vector2(239, 71)
-
-[node name="Sprite2D" type="Sprite2D" parent="GameWorld/Sando2"]
-texture = ExtResource("7_1s6cj")
-
-[node name="Sando3" type="Area2D" parent="GameWorld" groups=["Sandwich"]]
-position = Vector2(243, 92)
-
-[node name="Sprite2D" type="Sprite2D" parent="GameWorld/Sando3"]
-texture = ExtResource("7_1s6cj")
-
-[node name="Sando4" type="Area2D" parent="GameWorld" groups=["Sandwich"]]
-position = Vector2(243, 128)
-
-[node name="Sprite2D" type="Sprite2D" parent="GameWorld/Sando4"]
-position = Vector2(-1, 0)
-texture = ExtResource("7_1s6cj")
