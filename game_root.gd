@@ -3,45 +3,47 @@ extends Node
 ## Top level script.  Currently functioning a 'global space (no autoload)
 ##
 
-@onready var UI = $UI
+@onready var UI = $UI			#ref to UI which is really display
+@onready var GW = $GW			#ref to game world
 
-# note: all these variables correspond to metrics displayed on the status bar
-# we will rationalize nameing later ... 
-# and 'balance' later
-# 1) four supply levels (unknown units)
-var bread: int = 99					# maybe make 99 a sentinal for infinite?
-var peanut_butter: int = 20;		#
-var marmalade: int = 10				# assumed to be orange marmalade
-var strawberry: int = 10			# assumed to be strawberry jam, not jelly!
-
-# 2) three intermediate product (slices) counts - number of object in game
-# (so controlled by game world logic)
-var pb_slices: int = 0
-var marmalade_slices: int = 0
-var strawberry_slices: int = 0
-
-# 3) two final outputs 
-var sandwich_count: int = 0			# number of objects in game controled by game world
-var coins: int = 0					# no sales dynamic yet, placeholder
-
-# 4) day counter
-var day: int = 1					# currently placeholder
-
+# this translates maps all the weirdly named variables in game world to metric slots
+var metric_var_names: Dictionary[String, String] = {}
 
 
 func _ready():
-	pass
-	# initialize status bar display.  This really crys out for having
-	# all the metrics above in a dict with keys that match display node 
-	# names, common guy! TODO
-	#UI.update_metric("BD", bread)
-	#UI.update_metric("PB", peanut_butter)
-	#UI.update_metric("OM", marmalade)
-	#UI.update_metric("SJ", strawberry)	
-	#UI.update_metric("PBS", pb_slices)
-	#UI.update_metric("OMS", marmalade_slices)
-	#UI.update_metric("SJS", strawberry_slices)
-	#UI.update_metric("SWCH", sandwich_count)
-	#UI.update_metric("COIN", coins)
+	# set up mapping between UI metric display slots, standard names and 
+	# idiosyncratic varable names in game world
+	for key in UI.status_bar_values.keys():
+		metric_var_names[key] = ""
+		
+	# so this is the 'by hand' part that makes lines things up
+	# the only reason to copy the keys first ensure we are getting the 
+	# keys based on node names (from UI setup)
+	# I admit this is a bit weird.  Could maybe name nodes in code for 
+	# a code based single source of truth?  What happens when you code in a fever dream
+		metric_var_names["BD"] = "bread"
+		metric_var_names["PB"] = "peanut_butter"
+		metric_var_names["OM"] = "marmalade"
+		metric_var_names["SJ"] = "strawberry"
+		metric_var_names["PBS"] = "pb_slices"
+		metric_var_names["OMS"] = "marmalade_slices"
+		metric_var_names["SJS"] = "strawberry_slices"
+		metric_var_names["SWCH"] = "sandwich_count"
+		metric_var_names["COIN"] = "coins"
+		metric_var_names["DAY"] = "day"
+		
+	# connect metric updated signal from game world
+	var error = GW.metric_changed.connect(update_status_bar)
+	if error != OK:
+		print("Error connecting signal: ", error)
+		
+	# finally, init the status bar with whatever values we have
+	update_status_bar()
 	
+
+func update_status_bar():
+	# names, common guy! TODO this can now be a loop
+	for key in metric_var_names:
+		UI.update_metric(key, GW.get(metric_var_names[key]))
+	# template === UI.update_metric("PB", peanut_butter)
 	

@@ -1,9 +1,36 @@
 extends Node2D
 ##
-## Game World script.  Control game play, all display nodes etc.
+## Top Level Game World script.  Control game play, all display nodes etc.
 ##
 
+# emit when any variable representing a metric in the status bar changes
+# list of these can be found in game root _ready() code.
+signal metric_changed
+
+
 var game_root			# reference to our pseudo-autoload holding globals
+
+# all our working variables.  Correspondence to metrics handled in game root
+# note: all these variables correspond to metrics displayed on the status bar
+# we will rationalize nameing later ... 
+# and 'balance' later
+# 1) four supply levels (unknown units)
+var bread: int = 99					# maybe make 99 a sentinal for infinite?
+var peanut_butter: int = 20;		#
+var marmalade: int = 10				# assumed to be orange marmalade
+var strawberry: int = 10			# assumed to be strawberry jam, not jelly!
+
+# 2) three intermediate product (slices) counts - number of object in game
+var pb_slices: int = 0
+var marmalade_slices: int = 0
+var strawberry_slices: int = 0
+
+# 3) two final outputs 
+var sandwich_count: int = 0			# number of objects in game controled by game world
+var coins: int = 0					# no sales dynamic yet, placeholder
+
+# 4) day counter
+var day: int = 1					# currently placeholder
 
 # hold sandwiches.  We will generalize this later
 var sandwiches: Array = []
@@ -31,8 +58,13 @@ func _ready():
 	sandwiches = get_tree().get_nodes_in_group("Sandwich")
 	for sando in sandwiches:
 		sando.visible = false
-		game_root.sandwich_count += 1
+		sandwich_count += 1
 		
+	# count statically placed slices
+	pb_slices = count_two_groups("PeanutButter", "Slice")
+	marmalade_slices = count_two_groups("Marmalade", "Slice")
+	strawberry_slices = count_two_groups("Strawberry", "Slice")
+	
 	# init active slices
 	got_pb = null
 	got_j = null
@@ -69,9 +101,9 @@ func _on_slice_clicked(which_slice):
 
 # This function resets the state after the animation/clearance
 func make_sandwich():
-	var current_sando = sandwiches[game_root.sandwich_count]
+	var current_sando = sandwiches[sandwich_count]
 	current_sando.visible = true
-	game_root.sandwich_count += 1
+	sandwich_count += 1
 	
 	# deal with slices, hide them, set active to null etc.
 		# TODO that mouse thing?
@@ -82,3 +114,17 @@ func make_sandwich():
 	got_j.deselect()
 	got_j.hide()
 	got_j = null
+
+# helper function to for now count and later maybe return a list
+# of nodes in two groups - ie pb & slice or marmalade and sandwich
+func count_two_groups(group_a: String, group_b: String):
+	var both_nodes = []
+	var group_a_nodes = get_tree().get_nodes_in_group(group_a)
+	
+	for node in group_a_nodes:
+		if node.is_in_group(group_b):
+			both_nodes.append(node)
+			
+	return both_nodes.size()
+	
+	
