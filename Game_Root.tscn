@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://my24kio0ujk5"]
+[gd_scene load_steps=19 format=3 uid="uid://my24kio0ujk5"]
 
 [ext_resource type="Script" uid="uid://b5tqp6hq0k1hn" path="res://slice.gd" id="1_7v5bd"]
 [ext_resource type="Script" uid="uid://d2bilr7ke5epe" path="res://ui.gd" id="1_c2j4q"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://c3eq3uq4anhca" path="res://gw.gd" id="3_8r33m"]
 [ext_resource type="Shader" uid="uid://ciyj8fm22li3n" path="res://slice_outline.gdshader" id="3_jc5sx"]
 [ext_resource type="Texture2D" uid="uid://boqxi1goo45gw" path="res://strawberry_slice.png" id="3_p6n2f"]
-[ext_resource type="Texture2D" uid="uid://rficg841bitc" path="res://sandwich.png" id="7_1s6cj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1s6cj"]
 shader = ExtResource("3_jc5sx")
@@ -49,6 +48,9 @@ script = ExtResource("1_p6n2f")
 
 [node name="GW" type="Node2D" parent="."]
 script = ExtResource("3_8r33m")
+
+[node name="SandHere" type="Marker2D" parent="GW"]
+position = Vector2(351, 39)
 
 [node name="Slice1" type="Area2D" parent="GW" groups=["PeanutButter", "Slice"]]
 position = Vector2(42, 21)
@@ -139,31 +141,6 @@ texture = ExtResource("3_p6n2f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GW/Slice8" groups=["Strawberry"]]
 shape = SubResource("RectangleShape2D_ped8m")
-
-[node name="Sando1" type="Area2D" parent="GW" groups=["Sandwich"]]
-position = Vector2(240, 38)
-
-[node name="Sprite2D" type="Sprite2D" parent="GW/Sando1"]
-texture = ExtResource("7_1s6cj")
-
-[node name="Sando2" type="Area2D" parent="GW" groups=["Sandwich"]]
-position = Vector2(239, 71)
-
-[node name="Sprite2D" type="Sprite2D" parent="GW/Sando2"]
-texture = ExtResource("7_1s6cj")
-
-[node name="Sando3" type="Area2D" parent="GW" groups=["Sandwich"]]
-position = Vector2(243, 92)
-
-[node name="Sprite2D" type="Sprite2D" parent="GW/Sando3"]
-texture = ExtResource("7_1s6cj")
-
-[node name="Sando4" type="Area2D" parent="GW" groups=["Sandwich"]]
-position = Vector2(243, 128)
-
-[node name="Sprite2D" type="Sprite2D" parent="GW/Sando4"]
-position = Vector2(-1, 0)
-texture = ExtResource("7_1s6cj")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

@@ -34,6 +34,8 @@ var day: int = 1					# currently placeholder
 
 # hold sandwiches.  We will generalize this later
 var sandwiches: Array = []
+var sandwich_scene: PackedScene
+var sandwiches_are_at: Vector2
 
 # hold current activated slices, one of each kind
 var got_pb: Area2D
@@ -42,7 +44,7 @@ var got_j: Area2D
 func _ready():
 	# get ref to game root so can access global values easily
 	game_root = owner
-	
+		
 	# Connect to all the slice signals
 	for child in get_children():
 		# Check if the child is a slice node (e.g., check its group, name, or type)
@@ -54,11 +56,9 @@ func _ready():
 			if error != OK:
 				print("Error connecting signal: ", error)
 				
-	# get references to all the sandwich nodes
-	sandwiches = get_tree().get_nodes_in_group("Sandwich")
-	for sando in sandwiches:
-		sando.visible = false
-		sandwich_count += 1
+	# setup for making sandwiches
+	sandwiches_are_at = get_node("SandHere").position
+	sandwich_scene = load("res://Sandwich.tscn")
 		
 	# count statically placed slices
 	pb_slices = count_two_groups("PeanutButter", "Slice")
@@ -99,9 +99,9 @@ func _on_slice_clicked(which_slice):
 		make_sandwich()
 
 
-# This function resets the state after the animation/clearance
+# Instantiate a sandwich scene etc.
 func make_sandwich():
-	var current_sando = sandwiches[sandwich_count]
+	var current_sando = 
 	current_sando.visible = true
 	sandwich_count += 1
 	
