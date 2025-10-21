@@ -1,6 +1,9 @@
 extends Node
 ##
 ## Top level script.  Currently functioning a 'global space (no autoload)
+## Copyright (c) 2025 William Robb
+## Licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License 
+## (CC BY-NC-SA 4.0)
 ##
 
 @onready var UI = $UI			#ref to UI which is really display
