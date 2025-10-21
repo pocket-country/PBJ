@@ -33,7 +33,7 @@ func _ready():
 		metric_var_names["DAY"] = "day"
 		
 	# connect metric updated signal from game world
-	var error = GW.metric_changed.connect(update_status_bar)
+	var error = GW.a_metric_changed.connect(update_status_bar)
 	if error != OK:
 		print("Error connecting signal: ", error)
 		

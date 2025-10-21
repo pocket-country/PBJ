@@ -194,7 +194,6 @@ horizontal_alignment = 1
 [node name="Spacer" type="Label" parent="UI/VBoxContainer/Display/HBoxContainer/BD/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
-text = "blank"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -224,7 +223,6 @@ horizontal_alignment = 1
 [node name="Spacer" type="Label" parent="UI/VBoxContainer/Display/HBoxContainer/PB/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
-text = "blank"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -254,7 +252,6 @@ horizontal_alignment = 1
 [node name="Spacer" type="Label" parent="UI/VBoxContainer/Display/HBoxContainer/OM/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
-text = "blank"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -284,7 +281,6 @@ horizontal_alignment = 1
 [node name="Spacer" type="Label" parent="UI/VBoxContainer/Display/HBoxContainer/SJ/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
-text = "blank"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -314,7 +310,6 @@ horizontal_alignment = 1
 [node name="Spacer" type="Label" parent="UI/VBoxContainer/Display/HBoxContainer/PBS/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
-text = "blank"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -344,7 +339,6 @@ horizontal_alignment = 1
 [node name="Spacer" type="Label" parent="UI/VBoxContainer/Display/HBoxContainer/OMS/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
-text = "blank"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -374,7 +368,6 @@ horizontal_alignment = 1
 [node name="Spacer" type="Label" parent="UI/VBoxContainer/Display/HBoxContainer/SJS/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
-text = "blank"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -404,7 +397,6 @@ horizontal_alignment = 1
 [node name="Spacer" type="Label" parent="UI/VBoxContainer/Display/HBoxContainer/SWCH/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
-text = "blank"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -434,7 +426,6 @@ horizontal_alignment = 1
 [node name="Spacer" type="Label" parent="UI/VBoxContainer/Display/HBoxContainer/COIN/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
-text = "blank"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -464,7 +455,6 @@ horizontal_alignment = 1
 [node name="Spacer" type="Label" parent="UI/VBoxContainer/Display/HBoxContainer/DAY/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
-text = "blank"
 horizontal_alignment = 1
 vertical_alignment = 1
 

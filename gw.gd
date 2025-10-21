@@ -5,8 +5,7 @@ extends Node2D
 
 # emit when any variable representing a metric in the status bar changes
 # list of these can be found in game root _ready() code.
-signal metric_changed
-
+signal a_metric_changed
 
 var game_root			# reference to our pseudo-autoload holding globals
 
@@ -33,13 +32,12 @@ var coins: int = 0					# no sales dynamic yet, placeholder
 var day: int = 1					# currently placeholder
 
 # hold sandwiches.  We will generalize this later
-var sandwiches: Array = []
 var sandwich_scene: PackedScene
 var sandwiches_are_at: Vector2
 
 # hold current activated slices, one of each kind
-var got_pb: Area2D
-var got_j: Area2D
+var got_pb: Slice
+var got_j: Slice
 
 func _ready():
 	# get ref to game root so can access global values easily
@@ -89,31 +87,45 @@ func _on_slice_clicked(which_slice):
 			got_j = which_slice
 			got_j.select()
 		else:
-			if which_slice != got_pb:
-				got_pb.deselect()
-				got_pb = which_slice
-				got_pb.select()
+			if which_slice != got_j:
+				got_j.deselect()
+				got_j = which_slice
+				got_j.select()
 	
 	# do we have the makings of a sandwich?
 	if got_pb != null and got_j != null:
-		make_sandwich()
+		if got_j.is_in_group("Marmalade"):
+			make_sandwich("Marmalade")
+			return
+		if got_j.is_in_group("Strawberry"):
+			make_sandwich("Strawberry")
+			return
 
 
 # Instantiate a sandwich scene etc.
-func make_sandwich():
-	var current_sando = 
-	current_sando.visible = true
+func make_sandwich(flavor: String):
+	var current_sando = sandwich_scene.instantiate()
+	current_sando.global_position = sandwiches_are_at + (sandwich_count * Vector2(20, 20))
+	current_sando.add_to_group(flavor)
+	add_child(current_sando)
 	sandwich_count += 1
 	
-	# deal with slices, hide them, set active to null etc.
-		# TODO that mouse thing?
+	# deal with slices, hide them, set active to null, adjust counts
 	got_pb.deselect()
 	got_pb.hide()
+	pb_slices -= 1
 	got_pb = null
 	
 	got_j.deselect()
 	got_j.hide()
+	if got_j.is_in_group("Marmalade"):
+		marmalade_slices -= 1
+	if got_j.is_in_group("Strawberry"):
+		strawberry_slices -= 1
 	got_j = null
+	
+	emit_signal("a_metric_changed")
+
 
 # helper function to for now count and later maybe return a list
 # of nodes in two groups - ie pb & slice or marmalade and sandwich

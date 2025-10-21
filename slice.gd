@@ -1,4 +1,4 @@
-extends Area2D
+class_name Slice extends Area2D
 
 signal slice_clicked(whoami: Area2D)
 
